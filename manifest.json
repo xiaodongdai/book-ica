@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+
+  "name": "book-ica",
+  "description": "This extension helps the use to book ica delivery time slot.",
+  "version": "1.5",
+
+  "web_accessible_resources": ["circle.png", "beep-01a.mp3"],
+  "permissions": [
+    "activeTab",
+    "storage",
+    "notifications"
+  ],
+  "content_scripts": [
+    {
+     "matches": ["https://www.ica.se/*"],
+     "css": ["inject.css"],
+     "js": ["inject.js"],
+     "run_at": "document_start",
+     "all_frames" : true
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "circle.png"
+  }
+}

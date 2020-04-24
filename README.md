@@ -1,2 +1,3 @@
 # book-ica
-Periodically check idle delivery time slot from ice.se
+A chrome extension to help you book a delivery time slot.
+
