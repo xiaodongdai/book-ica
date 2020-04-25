@@ -1,23 +1,27 @@
 'use strict';
 
-let enabled = document.getElementById('enabled')
-let checkNextWeek = document.getElementById('nextweek')
-let postNumber = document.getElementById('postnumber')
-
+let inputEnabled = document.getElementById('enabled')
+let inputNbrOfDays = document.getElementById('nbrOfDays')
+let inputPostNumber = document.getElementById('postnumber')
+let inputRiskGroup = document.getElementById('riskgroup')
 
 chrome.storage.sync.get('icaPostNumber', function(data) {
-  postNumber.value = data.icaPostNumber || '19164'
+  inputPostNumber.value = data.icaPostNumber || '19164'
 })
 
-chrome.storage.sync.get('icaIfCheckNextWeek', function(data) {
-  checkNextWeek.checked = data.icaIfCheckNextWeek || true
+chrome.storage.sync.get('icaNbrOfDays', function(data) {
+  inputNbrOfDays.value = data.icaNbrOfDays === undefined ? 3 : data.icaNbrOfDays
 })
 
 chrome.storage.sync.get('icaIfEnabled', function(data) {
-  enabled.checked = data.icaIfEnabled || true
+  inputEnabled.checked = data.icaIfEnabled === undefined ? true : data.icaIfEnabled
 })
 
-enabled.onchange = function(element) {
+chrome.storage.sync.get('icaIfRiskGroup', function(data) {
+  inputRiskGroup.checked = data.icaIfRiskGroup === undefined ? true : data.icaIfRiskGroup
+})
+
+inputEnabled.onchange = function(element) {
   let ifEnabled = element.target.checked
   console.log('checked')
   chrome.storage.sync.set({icaIfEnabled: ifEnabled}, function(data) {
@@ -25,16 +29,23 @@ enabled.onchange = function(element) {
   })
 }
 
-checkNextWeek.onchange = function(element) {
-  let ifCheckNextWeek = element.target.checked
-  chrome.storage.sync.set({icaIfCheckNextWeek: ifCheckNextWeek}, function(data) {
-    console.log(`save to storage icaIfCheckNextWeek: ${ifCheckNextWeek}`)
+inputNbrOfDays.onchange = function(element) {
+  let nbrOfDays = element.target.value
+  chrome.storage.sync.set({icaNbrOfDays: nbrOfDays}, function(data) {
+    console.log(`save to storage icaNbrOfDays: ${nbrOfDays}`)
   })
 }
 
-postNumber.onchange = function(element) {
+inputPostNumber.onchange = function(element) {
   let thePostNumber = element.target.value
   chrome.storage.sync.set({icaPostNumber: thePostNumber}, function(data) {
     console.log(`save to storage icaPostNumber: ${thePostNumber}`)
+  })
+}
+
+inputRiskGroup.onchange = function(element) {
+  let ifRiskGroup = element.target.checked
+  chrome.storage.sync.set({icaIfRiskGroup: ifRiskGroup}, function(data) {
+    console.log(`save to storage icaIfRiskGroup: ${ifRiskGroup}`)
   })
 }

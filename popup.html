@@ -3,14 +3,15 @@
   <head>
     <style>
       body {
-          min-width:200px;
+          min-width:250px;
       }
     </style>
   </head>
   <body>
     Postnummer:<input size=10 type="text" id="postnumber" name="postnumber"></br>
     Enabled:<input type="checkbox" id="enabled" name="enabled"></br>
-    Check Next Week:<input type="checkbox" id="nextweek" name="nextweek"></br>
+    Check Delivery Time in <input type="number" id="nbrOfDays" name="nbrOfDays" min="1" max="10"> days</br>
+    Risk Group:<input type="checkbox" id="riskgroup" name="riskgroup"></br>
     <script src="popup.js"></script>
   </body>
 </html>
