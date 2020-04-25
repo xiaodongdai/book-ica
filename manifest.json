@@ -3,7 +3,7 @@
 
   "name": "book-ica",
   "description": "This extension helps the user book ica delivery time slot.",
-  "version": "1.5",
+  "version": "1.6",
 
   "web_accessible_resources": ["circle.png", "beep-01a.mp3"],
   "permissions": [
