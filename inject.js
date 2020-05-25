@@ -117,7 +117,7 @@ function loadConfigurations() {
   })
 
   chrome.storage.sync.get('icaIfEnabled', function(data) {
-    enabled = data.icaIfEnabled === undefined ? true : data.icaIfCheckNextWeek
+    enabled = data.icaIfEnabled === undefined ? true : data.icaIfEnabled
   })
 
   chrome.storage.sync.get('icaIfRiskGroup', function(data) {

@@ -12,7 +12,7 @@
   ],
   "content_scripts": [
     {
-     "matches": ["https://www.ica.se/*"],
+     "matches": ["https://www.ica.se/handla/checkout/pickupSlot.jsp"],
      "css": ["inject.css"],
      "js": ["inject.js"],
      "run_at": "document_start",
